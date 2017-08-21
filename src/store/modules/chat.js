@@ -15,7 +15,8 @@ const state = {
   toUser: {},
   message: '',
   error: false,
-  el: null
+  el: null,
+  toBottom: true
 }
 const getters = {
   getSession: state => state.session,
@@ -64,8 +65,11 @@ const mutations = {
     const user = state.friends.find(cv => cv.uid === uid)
     user.online = true
   },
-  [types.SCROLL_BOTTOM] (state, el) {
+  [types.LOAD_SCROLL_BOX] (state, el) {
     state.el = el
+  },
+  [types.SCROLL_BOTTOM] (state, toButton) {
+    state.toBottom = toButton
   }
 }
 const actions = {
@@ -75,7 +79,7 @@ const actions = {
         commit(types.GET_USERS, res.data)
       })
   },
-  sendMessage ({commit, state}) {
+  sendMessage ({commit, state, dispatch}) {
     const msg = Mock.mock({
       id: Mock.Random.increment(),
       from: {
@@ -142,8 +146,11 @@ const actions = {
         })
     }
   },
-  scrollBottom ({commit}, el) {
-    commit(types.SCROLL_BOTTOM, el)
+  loadScrollBox ({commit}, el) {
+    commit(types.LOAD_SCROLL_BOX, el)
+  },
+  scrollBottom ({commit}, toBottom) {
+    commit(types.SCROLL_BOTTOM, toBottom)
   }
 }
 

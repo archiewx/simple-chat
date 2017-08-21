@@ -32,14 +32,23 @@
         user: 'getToUser'
       })
     },
+    data () {
+      return {
+        el: null
+      }
+    },
     mounted () {
       const el = document.querySelector('#body_box')
-      this.$store.dispatch('scrollBottom', el)
+      this.$store.dispatch('loadScrollBox', el)
       el && el.addEventListener('scroll', _.debounce(this.handleScroll, 300))
+      this.el = el
     },
     methods: {
       handleScroll (ev) {
-        console.log(ev)
+        const height = document.querySelector('.body-item-box').clientHeight + 32
+        const boxHeight = ev.target.clientHeight
+        if (height > boxHeight) {
+        }
       }
     }
   }

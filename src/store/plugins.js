@@ -3,7 +3,7 @@
  *  date: 2017/8/15
  *  email: zhenglfsir@gmail.com
  */
-import { SEND_MESSAGE } from './mutation-types'
+import * as types from './mutation-types'
 
 export default {
   createWebSocketPlugin (socket) {
@@ -42,8 +42,30 @@ export default {
       })
 
       store.subscribe(mutation => {
-        if (mutation.type === SEND_MESSAGE) {
-          socket.send(mutation.payload)
+        switch (mutation.type) {
+          case types.SEND_MESSAGE:
+            socket.send(mutation.payload)
+            setTimeout(() => {
+              store.dispatch('scrollBottom', true)
+            }, 1000)
+            break
+          case types.SCROLL_BOTTOM:
+            const bodyBox = document.querySelector('.body-item-box')
+            const el = store.state.chat.el
+            const height = bodyBox.clientHeight
+            const boxHeight = el.clientHeight
+            if (height > boxHeight && el.scrollTop > el.clientHeight * 2) {
+              let timer = setInterval(() => {
+                if (el.scrollTop === (bodyBox.offsetTop + el.offsetTop + height - boxHeight - 58)) {
+                  console.log('clear')
+                  clearInterval(timer)
+                }
+                store.state.chat.el.scrollTop += 2
+              }, 10)
+            } else {
+              el.scrollTop = bodyBox.offsetTop + el.offsetTop + height - boxHeight
+            }
+            break
         }
       })
     }
