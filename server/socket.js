@@ -61,7 +61,6 @@ module.exports = {
         msgs.push(data)
         const user = friends.find(cv => cv.uid === data.to.uid)
         user.lastMsg = data.content
-        console.log(data)
         socket.broadcast.emit('syncMessage', data.from.uid)
       })
       socket.on('disconnect', reason => {
