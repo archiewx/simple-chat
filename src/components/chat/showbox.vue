@@ -20,6 +20,7 @@
 <script>
   import MsgItem from './msgitem.vue'
   import { mapGetters } from 'vuex'
+  import _ from 'lodash/function'
 
   export default {
     components: {
@@ -34,7 +35,7 @@
     mounted () {
       const el = document.querySelector('#body_box')
       this.$store.dispatch('scrollBottom', el)
-      el && el.addEventListener('scroll', this.handleScroll)
+      el && el.addEventListener('scroll', _.debounce(this.handleScroll, 300))
     },
     methods: {
       handleScroll (ev) {
