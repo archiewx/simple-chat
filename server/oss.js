@@ -3,13 +3,9 @@ const router = express.Router()
 const base64 = require('crypto-js/enc-base64')
 const hmacSha1 = require('crypto-js/hmac-sha1')
 const utf8 = require('crypto-js/enc-utf8')
+const devConfig = require('../config/dev.config')
 
-const config = {
-  id: 'xxx',
-  key: 'xxx',
-  host: 'http://wxd-private.oss-cn-beijing.aliyuncs.com',
-  dir: 'test/'
-}
+const config = devConfig.oss
 
 router.use('/signature', function (req, res, next) {
   let expires = Date.parse(new Date()) / 1000 + 30

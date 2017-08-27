@@ -22,6 +22,10 @@ const state = {
     {
       name: 'oss云上传',
       path: '/exp/ossupload'
+    },
+    {
+      name: 'qiniu 云上传',
+      path: '/exp/qiniuupload'
     }
   ],
   socket: null

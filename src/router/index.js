@@ -31,6 +31,13 @@ export default new Router({
           meta: {
             title: 'oss 上传'
           }
+        },
+        {
+          path: 'qiniuupload',
+          component: r => require(['@/components/qiniu/qiniu.vue'], r),
+          meta: {
+            title: 'qiniu 上传'
+          }
         }
       ]
     }

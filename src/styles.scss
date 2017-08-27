@@ -70,6 +70,7 @@ a {
 
 .exp-right {
   flex: 2;
+  max-width: 1100px;
   .title {
     color: $baseFont;
     font-size: $largeFont;
@@ -391,7 +392,6 @@ a {
   }
 }
 
-.el-card {
+.el-row {
   margin-top: 16px;
-  width: 500px;
 }
