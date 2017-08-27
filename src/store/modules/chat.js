@@ -105,6 +105,7 @@ const actions = {
         if (res.data) {
           commit(types.SAVE_SESSION, res.data)
           dispatch('getUsers')
+          dispatch('joinChat')
         } else {
           commit(types.REQUEST_ERROR, res.msg)
         }

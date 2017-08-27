@@ -20,3 +20,5 @@ export const REQUEST_ERROR = 'REQUEST_ERROR'
 
 export const SCROLL_BOTTOM = 'SCROLL_BOTTOM'
 export const LOAD_SCROLL_BOX = 'LOAD_SCROLL_BOX'
+
+export const JOIN_CHAT = 'JOIN_CHAT'

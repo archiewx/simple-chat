@@ -56,6 +56,7 @@ module.exports = {
     var io = require('socket.io')(http)
     var globalSocket = null
     io.on('connection', function (socket) {
+      console.log('[connect]')
       globalSocket = socket
       socket.on('message', data => {
         msgs.push(data)
@@ -140,6 +141,8 @@ module.exports = {
         })
       })
     })
+    app.use('/oss', require('./oss'))
+    app.use('/qiniu', require('./qiniu'))
     return http
   }
 }

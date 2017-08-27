@@ -12,3 +12,4 @@ export const getUsers = params => axios.post('/chat/users', null, {params}).then
 export const getMessagesById = params => axios.post('/chat/messages', null, {params}).then(res => res.data)
 
 export const getMessages = params => axios.post('/chat/msgs', null, {params}).then(res => res.data)
+

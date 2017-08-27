@@ -9,8 +9,7 @@ import mutations from './mutations'
 import getters from './getters'
 import actions from './actions'
 import chat from './modules/chat'
-import plugins from './plugins'
-import io from 'socket.io-client'
+import socketPlugin from './plugins'
 
 Vue.use(Vuex)
 
@@ -19,12 +18,14 @@ const state = {
     {
       name: 'vue聊天',
       path: '/exp/chat'
+    },
+    {
+      name: 'oss云上传',
+      path: '/exp/ossupload'
     }
   ],
   socket: null
 }
-state.socket = io()
-const serverPlugin = plugins.createWebSocketPlugin(state.socket)
 
 export default new Vuex.Store({
   state,
@@ -34,5 +35,5 @@ export default new Vuex.Store({
   modules: {
     chat
   },
-  plugins: [serverPlugin]
+  plugins: [socketPlugin]
 })

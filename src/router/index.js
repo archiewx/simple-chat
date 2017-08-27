@@ -24,6 +24,13 @@ export default new Router({
           meta: {
             title: 'vue 聊天'
           }
+        },
+        {
+          path: 'ossupload',
+          component: r => require(['@/components/oss/oss.vue'], r),
+          meta: {
+            title: 'oss 上传'
+          }
         }
       ]
     }
