@@ -5,8 +5,8 @@ const hmacSha1 = require('crypto-js/hmac-sha1')
 const utf8 = require('crypto-js/enc-utf8')
 
 const config = {
-  id: 'LTAIfgmlXhG201N8',
-  key: 'JRf704OYAa2RyaTvVzTt7rcpt5RB7k',
+  id: 'xxx',
+  key: 'xxx',
   host: 'http://wxd-private.oss-cn-beijing.aliyuncs.com',
   dir: 'test/'
 }
