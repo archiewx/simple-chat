@@ -86,7 +86,7 @@ module.exports = {
       const name = req.query.name
       const user = friends.find(cv => cv.name === name)
       if (user) {
-        globalSocket.broadcast.emit('login', user.uid)
+        globalSocket && globalSocket.broadcast.emit('login', user.uid)
         req.session.uid = user.uid
         user.online = true
         res.json({
@@ -109,7 +109,7 @@ module.exports = {
           online: true,
           selected: false
         })
-        globalSocket.broadcast.emit('syncUser')
+        globalSocket && globalSocket.broadcast.emit('syncUser')
         friends.push(newUser)
         res.json({
           msg: '注册成功',
